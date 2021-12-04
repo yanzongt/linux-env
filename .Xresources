@@ -1,0 +1,83 @@
+! General
+URxvt.termNmae: rxvt-unicode-256color
+URxvt.borderLess:False
+URxvt.cursorBlink:False
+URxvt.saveLines:65536
+URxvt.scrollBar:True
+URxvt.scrollBar_right:True
+URxvt.scrollBar_floating:False
+URxvt.scrollstyle:plain
+URxvt.scrollTtyOutput:False
+URxvt.scrollWithBuffer:True
+URxvt.scrollTtyKeypress:True
+URxvt.iconFile: /usr/share/icons/gnome/16x16/apps/terminal.png
+
+! URxvt shortkeys
+!URxvt.keysym.F11: perl:fullscreen:switch
+
+! Extensions
+!!!!No white space between extension names
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: firefox
+URxvt.matcher.button: 1
+
+! Input Method
+URxvt.preeditType:OffTheSpot
+URxvt.inputMethod:fcitx
+
+! Fonts
+URxvt.font: xft:Bitstream Vera Sans Mono:size=16:atialias=true:hinting=true,xft:文泉驿等宽微米黑:size=20
+URxvt.boldfont: xft:Bitstream Vera Sans Mono:bold:size=16:atialias=true:hinting=true, xft:文泉驿等宽微米黑:style=BOld:size=20
+
+!!颜色设置
+URxvt.depth:32
+URxvt.colorBD:white
+URxvt.colorUL:Green
+URxvt.background: black
+URxvt.foreground: white
+!!调整透明度
+URxvt.inheritPixmap: True
+URxvt.tintColor: white
+URxvt.shading: 20
+
+!!颜色重定义
+!Black
+URxvt.color0:  #000000
+URxvt.color8:  #555753
+!Red
+URxvt.color1:  #CC0000
+URxvt.color9:  #EF2929
+!Green
+URxvt.color2:  #4E9A06
+URxvt.color10: #8AE234
+!Yellow
+URxvt.color3:  #C4A000
+URxvt.color11: #FCE94F
+!Blue
+URxvt.color4:  #3465A4
+URxvt.color12: #729FCF
+!Magenta
+URxvt.color5:  #75507B
+URxvt.color13: #AD7FA8
+!Cyan
+URxvt.color6:  #06989A
+URxvt.color14: #34E2E2
+!White
+URxvt.color7:  #D3D7CF
+URxvt.color15: #EEEEEC
+
+! 实现ctrl+shift+c/v的复制粘贴
+! https://unix.stackexchange.com/questions/444773/how-to-disable-the-ctrlshift-binding-iso-14755-in-urxvt
+! https://unix.stackexchange.com/questions/294337/rebinding-ctrl-alt-cv-to-ctrl-shift-cv-in-urxvt-9-20
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+! 一定要写全名及大写的C/V,否则无效
+! Shift/Control 顺序无关
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+
+! 禁用之前的复制粘贴方案
+URxvt.keysym.Control-Meta-c: builtin-string:
+URxvt.keysym.Control-Meta-v: builtin-string:
+
