@@ -28,3 +28,6 @@ cp vim-plug/plug.vim ~/.vim/autoload/
 # install j4-make-config
 cd ~/usr/src
 git clone https://github.com/okraits/j4-make-config.git
+
+# install xclip
+sudo apt install xclip

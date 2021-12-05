@@ -25,9 +25,15 @@ URxvt.matcher.button: 1
 URxvt.preeditType:OffTheSpot
 URxvt.inputMethod:fcitx
 
+!-- Xft settings -- !
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintfull
 ! Fonts
-URxvt.font: xft:Bitstream Vera Sans Mono:size=16:atialias=true:hinting=true,xft:文泉驿等宽微米黑:size=20
-URxvt.boldfont: xft:Bitstream Vera Sans Mono:bold:size=16:atialias=true:hinting=true, xft:文泉驿等宽微米黑:style=BOld:size=20
+URxvt.font: xft:Bitstream vera Sans Mono:size=14,xft:WenQuanYi Zen Hei Mono:size=14
+URxvt.boldfont: xft:Bitstream vera Sans Mono:bold:size=14, xft:WenQuanYi Zen Hei Mono:style=Bold:size=14
 
 !!颜色设置
 URxvt.depth:32

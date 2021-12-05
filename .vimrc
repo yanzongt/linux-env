@@ -1,8 +1,11 @@
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf.vim'
 Plug 'plasticboy/vim-markdown', { 'for':'markdown' }
+Plug 'mileszs/ack.vim'  
 call plug#end()
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 imap jk <Esc>
 inoremap <C-h> <Left>
@@ -10,6 +13,7 @@ inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
 set number
-" https://www.liuvv.com/p/a0700771.html
-nnoremap <leader>fo :Files<CR>"映射
-nnoremap <leader>fif :Rg<CR> "映射
+" https://keelii.com/2018/08/12/fuzzy-finder-full-guide/
+nmap <C-p> :Files<CR>
+nmap <C-e> :Buffers<CR>
+let g:fzf_action = { 'ctrl-e': 'edit' }

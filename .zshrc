@@ -109,3 +109,4 @@ export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat 
 export FZF_DEFAULT_COMMAND="fd --type f"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/.fzf/shell/zsh-interactive-cd.plugin.zsh
