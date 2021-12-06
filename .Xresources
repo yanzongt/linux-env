@@ -32,8 +32,8 @@ Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintfull
 ! Fonts
-URxvt.font: xft:Bitstream vera Sans Mono:size=14,xft:WenQuanYi Zen Hei Mono:size=14
-URxvt.boldfont: xft:Bitstream vera Sans Mono:bold:size=14, xft:WenQuanYi Zen Hei Mono:style=Bold:size=14
+URxvt.font: xft:Bitstream Vera Sans Mono:size=14,xft:WenQuanYi Zen Hei Mono:size=14
+URxvt.boldfont: xft:Bitstream Vera Sans Mono:bold:size=14, xft:WenQuanYi Zen Hei Mono:style=Bold:size=14
 
 !!颜色设置
 URxvt.depth:32
@@ -43,7 +43,7 @@ URxvt.background: black
 URxvt.foreground: white
 !!调整透明度
 URxvt.inheritPixmap: True
-URxvt.tintColor: white
+URxvt.tintColor: grey
 URxvt.shading: 20
 
 !!颜色重定义
