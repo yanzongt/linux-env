@@ -8,9 +8,8 @@ export ZSH="/home/yanzt/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-autoload -U compinit
-compinit
+#ZSH_THEME="af-magic"
+ZSH_THEME="arrow"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -25,13 +24,14 @@ compinit
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+# export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -46,9 +46,6 @@ compinit
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -72,7 +69,7 @@ compinit
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf sudo)
+plugins=(git autojump themes web-search tm z sudo)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -90,6 +87,19 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
+# pip zsh completion start
+function _pip_completion {
+  local words cword
+  read -Ac words
+  read -cn cword
+  reply=( $( COMP_WORDS="$words[*]" \
+             COMP_CWORD=$(( cword-1 )) \
+             PIP_AUTO_COMPLETE=1 $words[1] ) )
+}
+compctl -K _pip_completion pip
+# pip zsh completion end
+
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -101,12 +111,41 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias rr=ranger
-alias ff=fzf
+#fzf
+alias ff="fzf"
+alias gitcf='git checkout $(git branch -r | fzf)'
+alias cdf='cd $(find * -type d | fzf)'
+alias vimf='vim $fzf'
+alias rr="ranger"
+alias rezsh="source ~/.zshrc"
+#lsd
+alias ls="lsd"
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+#glances
+alias gtop="glances"
+#other
+alias rei="~/usr/bin/j4-make-config -r google"
+alias pp="scrot"
 
+source /opt/ros/melodic/setup.zsh
+export CUDA_HOME=/usr/local/cuda/
+export PATH=$PATH:$CUDA_HOME/bin/
 export PATH=$PATH:~/usr/bin/
-export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
-export FZF_DEFAULT_COMMAND="fd --type f"
+export PATH=$PATH:~/.cargo/bin/
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+export bag_path=~/wss/bags/
+#export ROS_HOSTNAME=192.168.10.49
+export ROS_HOSTNAME=localhost
+# 导致vscode里的股票插件无法联网
+#export http_proxy=http://127.0.0.1:8001
+#export https_proxy=http://127.0.0.1:8001
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source ~/.fzf/shell/zsh-interactive-cd.plugin.zsh
+
+export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.cache,build}"
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
+
+setopt no_nomatch

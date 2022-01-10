@@ -7,3 +7,4 @@ cp i3-config.base ~/.config/i3/config.base
 cp polybar-config ~/.config/polybar/config
 # https://harttle.land/2019/08/08/linux-keymap-on-macbook.html
 cp .Xmodmap ~/.Xmodmap
+cp .tmux.conf ~/.tmux.conf
